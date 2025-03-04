@@ -1,0 +1,21 @@
+.results-container {
+  display: flex;
+  justify-content: center; /* Center the results horizontally */
+  align-items: flex-start; /* Align items at the top */
+  gap: 20px; /* Spacing between results */
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+/* Style for individual result displays */
+.results-container > div {
+  padding: 10px;
+  border: 2px solid var(--secondary);
+  border-radius: var(--border-radius);
+  text-align: left;
+  min-width: 150px; /* Prevent the results from collapsing */
+}
+
+.results-container .last-result {
+  border-color: var(--highlight);
+}

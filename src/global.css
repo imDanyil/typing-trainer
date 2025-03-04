@@ -1,0 +1,343 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=PT+Mono&display=swap'); */
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('fonts/NotoSans-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PT Mono';
+  src: url('fonts/PTMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Symbols Nerd Font';
+  src: url('fonts/SymbolsNerdFontMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  /* Світла тема */
+  --bg-color: #f5f5f7;
+  --bg-lighter: #f7f7f7;
+  --bg-light: #f0f0f3;
+  --bg-dark: #e0e0e5;
+  --container-bg: #d8dde5;
+  --input-bg: rgba(229, 231, 235, 0.25);
+
+  --text-color: #242424;
+  --primary: #005b99;
+  --secondary: #e5e7eb;
+  --accent: #ff6b81;
+  --highlight: #ffb86c;
+  --error: #d54e53;
+  --success: #4caf50;
+  --warning: #ffbe3d;
+  --info: #8be9fd;
+  --muted: #4d5a6e;
+  --border-radius: 12px;
+}
+
+[data-theme='dark'] {
+  /* Темна тема */
+  --bg-color: #24283b;
+  --bg-lighter: #32374e;
+  --bg-light: #2b3047;
+  --bg-dark: #1b1f2a;
+  --container-bg: #2b3047;
+  --input-bg: rgba(77, 91, 111, 0.5);
+  --container-muted: #4d5a6e;
+
+  --text-color: #c0caf5;
+  --primary: #7aa2f7;
+  --secondary: #3b4261;
+  --accent: #ff79c6;
+  --highlight: #ffb86c;
+  --error: #f7768e;
+  --success: #9ece6a;
+  --warning: #ffbe3d;
+  --info: #8be9fd;
+  --muted: #4d5a6e;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+  }
+} */
+
+/* @font-face {
+  font-family: 'Noto Sans';
+  src: url('./fonts/NotoSans-Variable.ttf') format('ttf');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PT Mono';
+  src: url('fonts/PTMono-Regular.ttf') format('ttf');
+  font-weight: 400;
+  font-style: normal;
+} */
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Noto Sans', 'Symbols Nerd Font', sans-serif;
+  transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out;
+}
+
+.container {
+  width: 90%;
+  max-width: 920px;
+  padding: 20px;
+  text-align: center;
+  background: var(--bg-lighter);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+/* 📌 Блок з попередженням */
+.warning {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* transform: translate(-50%, -50%) scale(0.8); */
+  /* transform-origin: center; */
+  padding: 10px 20px;
+  background-color: var(--warning);
+  color: #242424;
+  border-radius: var(--border-radius);
+  /* margin-bottom: 15px; */
+  font-weight: bold;
+  white-space: nowrap;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  /* transition: opacity 0.3s fade-out, transform 0.3s fade-out; */
+  /* transform: translateY(-10px); */
+  /* will-change: transform, opacity; */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  animation: fade-in 0.3s forwards, fade-out 0.3s 1.7s forwards;
+  z-index: 10;
+  pointer-events: none;
+  /* transform: translate(-50%, -50%) scale(0.8) translateZ(0); */
+}
+
+/* .warning.show {
+  transform: none !important;
+} */
+
+/* ⚡️ Анімація для fade-in */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* 📌 Поле введення */
+.text-display {
+  font-size: 24px;
+  letter-spacing: 1px;
+  padding: 10px;
+  border: 2px solid var(--primary);
+  border-radius: var(--border-radius);
+  background: var(--input-bg);
+  /* color: ; */
+  margin-bottom: 15px;
+  position: relative;
+  display: flex; /* Додаємо flexbox */
+  flex-wrap: wrap; /* Переносимо слова на новий рядок, якщо не вміщаються */
+  gap: 10px; /* Додаємо відстань між словами */
+  font-family: 'PT Mono', monospace;
+  transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out,
+    border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none; /* Прибираємо стандартну обводку при фокусі */
+}
+
+.text-display:focus {
+  border-color: var(--accent); /* Змінюємо колір рамки при фокусі */
+  box-shadow: 0 0 5px var(--accent); /* Додаємо тінь при фокусі */
+}
+
+.input-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px;
+  font-size: 18px;
+  border: 2px solid var(--primary);
+  border-radius: var(--border-radius);
+  outline: none;
+  transition: border 0.2s ease-in-out;
+}
+
+input:focus {
+  border-color: var(--secondary);
+}
+
+button {
+  border-radius: var(--border-radius);
+  border: 2px solid transparent;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: var(--primary);
+  color: white;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background-color: var(--secondary);
+}
+
+.word {
+  display: inline-block;
+}
+
+/* ✅ Анімація зміни кольору */
+.letter {
+  transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.correct {
+  color: var(--success);
+}
+
+.incorrect {
+  color: var(--error);
+}
+
+.extra {
+  color: var(--error);
+  opacity: 75%;
+}
+
+.pending {
+  opacity: 75%;
+}
+
+/* 📌 Плавна поява підкреслення */
+
+.incorrect-word {
+  position: relative;
+}
+
+.incorrect-word::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* Або інше значення, щоб розташувати підкреслення правильно */
+  width: 100%;
+  height: 2px;
+  background-color: #f7768e; /* Колір підкреслення */
+  transform: scaleX(0); /* Починаємо з нульової ширини */
+  transform-origin: left; /* Точка початку анімації - лівий край */
+  animation: showUnderline 0.3s ease-in-out forwards; /* Задаємо анімацію */
+  animation-play-state: paused; /* Анімація спочатку призупинена */
+}
+
+.incorrect-word.show-underline::after {
+  animation-play-state: running; /* Запускаємо анімацію при додаванні класу */
+}
+
+@keyframes showUnderline {
+  to {
+    transform: scaleX(1); /* В кінці анімації підкреслення на всю ширину */
+  }
+}
+
+/* .incorrect-word span.incorrect::after {
+  transform: scaleX(1);
+} */
+
+.incorrect-word .space::after {
+  content: none;
+}
+
+.word-count-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.word-count-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--secondary);
+  border-radius: var(--border-radius);
+  background-color: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.word-count-button:hover,
+.word-count-button:focus {
+  background-color: var(--primary);
+  color: white;
+  outline: none;
+}
+
+.word-count-button.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+#customWordCount {
+  padding: 0.5rem;
+  border: 1px solid var(--secondary);
+  border-radius: var(--border-radius);
+  background-color: transparent;
+  color: var(--text-color);
+  outline: none;
+  max-width: 80px;
+}
