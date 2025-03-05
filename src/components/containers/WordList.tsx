@@ -88,11 +88,11 @@ const WordList: React.FC<WordListProps> = ({
     // finished,
   } = useTypingStats({ currentIndex });
 
-  const handleNumberOfWordsChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setNumberOfWords(Number(event.target.value));
-  };
+  // const handleNumberOfWordsChange = (
+  //   event: React.ChangeEvent<HTMLSelectElement>
+  // ) => {
+  //   setNumberOfWords(Number(event.target.value));
+  // };
 
   const handleCustomNumberOfWordsChange = (
     event: React.ChangeEvent<HTMLInputElement>

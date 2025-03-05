@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import './global.css';
 import WordList from './components/containers/WordList';
 import Layout from './components/ui/Layout';

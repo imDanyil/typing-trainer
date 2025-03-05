@@ -7,7 +7,7 @@ interface TimeTrackerProps {
 
 const TimeTracker = ({ isRunning, onTimeUpdate }: TimeTrackerProps) => {
   const startTimeRef = useRef<number | null>(null);
-  const [elapsedTime, setElapsedTime] = useState(0);
+  const [_elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
     if (!isRunning) return;
